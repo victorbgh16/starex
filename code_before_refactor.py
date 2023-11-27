@@ -22,7 +22,6 @@ data = np.genfromtxt(calib_file, delimiter=";", skip_header=3)
 peak_height = 0.5
 peaks = scipy.signal.find_peaks(data[:, 1], height=peak_height)
 
-
 print("Peaks:")
 print(peaks)
 print("Peak 2 must be after peak 1")
