@@ -1,3 +1,5 @@
+from typing import Any
+
 import numpy as np
 import scipy
 
@@ -8,7 +10,6 @@ def read_data(calib_file):
 
 def find_peaks(data, peak_height):
     return scipy.signal.find_peaks(data[:, 1], height=peak_height)
-
 
 
 def get_peak_indices(number_peaks):
@@ -48,8 +49,10 @@ def generate_wavelength_distances(wavelengths):
 
     return wavelength_distances
 
+
 def calculate_wavelengths_per_x(peak_distances, wavelength_distances):
     return [x / peak_distances[ind] for ind, x in enumerate(wavelength_distances)]
+
 
 def iterative_mean(inp: list) -> float:
     total = 0.0

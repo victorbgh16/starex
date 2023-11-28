@@ -9,7 +9,18 @@ peak_height = float(input('Enter peak height here: '))
 
 peaks = calibrate.find_peaks(data, peak_height)
 
-print('Peaks are:\n', peaks)
+# print('Peaks are:\n', peaks)
+
+(indices, heights) = peaks
+
+print(f'Peak indices are: {indices}')
+
+tmp = []
+for i in range(0, len(indices)):
+    tmp.append(data[indices[i]][0])
+
+print(f'Peak x values are: {tmp}')
+print(f'Peak heights are: {heights}')
 
 print('Peak 1 must be before peak 2 and so on\n')
 
@@ -32,5 +43,8 @@ average = calibrate.iterative_mean(wavelengths_per_x)
 
 calibrated = calibrate.calibrate(data, peaks, wavelengths, average)
 
-plot.plot_raw_calibration(data, peaks)
-plot.plot_calibration_data(data, calibrated)
+# plot.plot_raw_calibration(data, peaks)
+# plot.plot_calibration_data(data, calibrated)
+
+plot.plot_graph('Raw Calibration', data[:, 0], data[:, 1])
+plot.plot_graph('Calibration Data', data[:, 0], data[:, 1], '$\lambda$ nm', '$\sigma$')

@@ -1,10 +1,10 @@
 import numpy as np
 
 def iterative_mean(inp: list) -> float:
-    average = 0.0
+    total = 0.0
     for i in range(0, len(inp)):
-        average = average + ((inp[i] - average) / (i + 1))
-    return average
+        total = total + ((inp[i] - total) / (i + 1))
+    return total
 
 
 

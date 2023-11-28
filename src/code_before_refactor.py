@@ -13,13 +13,13 @@ def iterative_mean(inp: list) -> float:
 
 #calib_file = input("Input Calibration Data File:")
 
-calib_file = r"data/Text_Calibration.csv"
+calib_file = r"../data/Text_Calibration.csv"
     #r"C:\Users\Simon\Desktop\SharpCap Captures\2023-11-24\Capture\19_16_30\Text_Calibration2"
     #r"C:\Users\Simon\Desktop\SharpCap Captures\2023-11-05\Capture\21_12_53\Neon_Calibrator_V1"
 
 
 data = np.genfromtxt(calib_file, delimiter=";", skip_header=3)
-peak_height = 0.5
+peak_height = 0.05
 peaks = scipy.signal.find_peaks(data[:, 1], height=peak_height)
 
 print("Peaks:")
