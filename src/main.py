@@ -1,4 +1,4 @@
-import calibrate
+from src import calibrate
 
 calib_file = r"" + input("Enter path to calibration file: ")
 

@@ -13,7 +13,7 @@ def iterative_mean(inp: list) -> float:
 
 #calib_file = input("Input Calibration Data File:")
 
-calib_file = r"Text_Calibration"
+calib_file = r"../data/Text_Calibration"
     #r"C:\Users\Simon\Desktop\SharpCap Captures\2023-11-24\Capture\19_16_30\Text_Calibration2"
     #r"C:\Users\Simon\Desktop\SharpCap Captures\2023-11-05\Capture\21_12_53\Neon_Calibrator_V1"
 
