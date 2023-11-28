@@ -46,7 +46,7 @@ def generate_wavelength_distances(wavelengths):
         if i + 1 < len(wavelengths):
             wavelength_distances.append(wavelengths[i + 1] - wavelengths[i])
 
-    return wavelengths
+    return wavelength_distances
 
 def calculate_wavelengths_per_x(peak_distances, wavelength_distances):
     return [x / peak_distances[ind] for ind, x in enumerate(wavelength_distances)]

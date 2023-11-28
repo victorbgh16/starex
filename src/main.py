@@ -5,7 +5,9 @@ calib_file = r'' + input('Enter path to calibration file: ')
 
 data = calibrate.read_data(calib_file)
 
-peaks = calibrate.find_peaks(data, 0.05)
+peak_height = float(input('Enter peak height here: '))
+
+peaks = calibrate.find_peaks(data, peak_height)
 
 print('Peaks are:\n', peaks)
 
