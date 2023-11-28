@@ -28,5 +28,3 @@ def plot_graph(title, x, y, xlabel='', ylabel=''):
     plt.ylabel(r'' + ylabel)
 
     plt.plot(x, y)
-
-    plt.show()

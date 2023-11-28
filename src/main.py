@@ -1,4 +1,7 @@
+import matplotlib
+import matplotlib.pyplot as plt
 from src import calibrate, plot
+matplotlib.use('TkAgg')
 
 calib_file = r'' + input('Enter path to calibration file: ')
 # calib_file = r'data/Text_Calibration.csv'
@@ -12,15 +15,15 @@ peaks = calibrate.find_peaks(data, peak_height)
 # print('Peaks are:\n', peaks)
 
 (indices, heights) = peaks
+peaks_x = []
+for i in range(0, len(indices)):
+    peaks_x.append(data[indices[i]][0])
+
+peaks_y = heights['peak_heights']
 
 print(f'Peak indices are: {indices}')
-
-tmp = []
-for i in range(0, len(indices)):
-    tmp.append(data[indices[i]][0])
-
-print(f'Peak x values are: {tmp}')
-print(f'Peak heights are: {heights}')
+print(f'Peak x values are: {peaks_x}')
+print(f'Peak heights are: {peaks_y}')
 
 print('Peak 1 must be before peak 2 and so on\n')
 
@@ -47,4 +50,9 @@ calibrated = calibrate.calibrate(data, peaks, wavelengths, average)
 # plot.plot_calibration_data(data, calibrated)
 
 plot.plot_graph('Raw Calibration', data[:, 0], data[:, 1])
-plot.plot_graph('Calibration Data', data[:, 0], data[:, 1], '$\lambda$ nm', '$\sigma$')
+plt.scatter(peaks_x, peaks_y)
+plt.show()
+
+plt.figure()
+plot.plot_graph('Calibration Data', calibrated, data[:, 1], '$\lambda$ nm', '$\sigma$')
+plt.show()
