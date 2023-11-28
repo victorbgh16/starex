@@ -56,3 +56,7 @@ plt.show()
 plt.figure()
 plot.plot_graph('Calibration Data', calibrated, data[:, 1], '$\lambda$ nm', '$\sigma$')
 plt.show()
+
+# ---------------------------------------------------------------------------------------------------------------------
+
+data_file = r'' + input('Enter path to data/measurement file: ')
