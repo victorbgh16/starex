@@ -34,7 +34,7 @@ def get_wavelengths(number_peaks):
     wavelengths = []
 
     for i in range(1, number_peaks + 1):
-        wavelengths.append(int(input(f'Enter wavelength of peak {i}: ')))
+        wavelengths.append(float(input(f'Enter wavelength of peak {i}: ')))
 
     return wavelengths
 
