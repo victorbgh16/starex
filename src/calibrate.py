@@ -3,7 +3,7 @@ import scipy
 
 
 def read_data(calib_file):
-    return np.genfromtxt(calib_file, delimiter=";", skip_header=3)
+    return np.genfromtxt(calib_file, delimiter=';', skip_header=3)
 
 
 def find_peaks(data, peak_height):
@@ -15,7 +15,7 @@ def get_peak_indices(number_peaks):
     peaks_indices = []
 
     for i in range(1, number_peaks+1):
-        peaks_indices.append(int(input(f"Enter index of peak {i}: ")))
+        peaks_indices.append(int(input(f'Enter index of peak {i}: ')))
 
     return peaks_indices
 
@@ -34,7 +34,7 @@ def get_wavelengths(number_peaks):
     wavelengths = []
 
     for i in range(1, number_peaks + 1):
-        wavelengths.append(int(input(f"Enter wavelength of peak {i}: ")))
+        wavelengths.append(int(input(f'Enter wavelength of peak {i}: ')))
 
     return wavelengths
 
