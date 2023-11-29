@@ -4,8 +4,8 @@ import numpy as np
 import scipy
 
 
-def read_data(calib_file):
-    return np.genfromtxt(calib_file, delimiter=';', skip_header=3)
+def read_data(file):
+    return np.genfromtxt(file, delimiter=';', skip_header=3)
 
 
 def find_peaks(data, peak_height):
@@ -60,5 +60,10 @@ def iterative_mean(inp: list) -> float:
         total = total + ((inp[i] - total) / (i + 1))
     return total
 
+
 def calibrate(data, peaks, wavelengths, average):
     return ((data[:, 0] - data[peaks[0][0], 0]) * average) + wavelengths[0]
+
+
+def calibrate_real_data(data, wavelengths, average):
+    return ((data[:, 0]) * average) + wavelengths[0]

@@ -4,7 +4,7 @@ from src import calibrate, plot
 matplotlib.use('TkAgg')
 
 calib_file = r'' + input('Enter path to calibration file: ')
-# calib_file = r'data/Text_Calibration.csv'
+# calib_file = r'data/calib.csv'
 
 data = calibrate.read_data(calib_file)
 
@@ -51,12 +51,20 @@ calibrated = calibrate.calibrate(data, peaks, wavelengths, average)
 
 plot.plot_graph('Raw Calibration', data[:, 0], data[:, 1])
 plt.scatter(peaks_x, peaks_y)
-plt.show()
+# plt.show()
 
 plt.figure()
-plot.plot_graph('Calibration Data', calibrated, data[:, 1], '$\lambda$ nm', '$\sigma$')
-plt.show()
+plot.plot_graph('Calibration Data', calibrated, data[:, 1], r'$\lambda$ nm', r'$\sigma$')
+# plt.show()
 
 # ---------------------------------------------------------------------------------------------------------------------
 
 data_file = r'' + input('Enter path to data/measurement file: ')
+
+real_data = calibrate.read_data(data_file)
+
+calibrated_real_data = calibrate.calibrate_real_data(real_data, wavelengths, average)
+
+plt.figure()
+plot.plot_graph('Calibrated Data', calibrated_real_data, real_data[:, 1], r'$\lambda\,$nm', r'$\sigma')
+plt.show()
