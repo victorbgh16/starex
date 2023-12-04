@@ -45,6 +45,7 @@ wavelengths_per_x = calibrate.calculate_wavelengths_per_x(peak_distances, wavele
 average = calibrate.iterative_mean(wavelengths_per_x)
 
 calibrated = calibrate.calibrate(data, peaks, wavelengths, average)
+offset = calibrate.calculate_offset(data, peaks, wavelengths, average)
 
 # plot.plot_raw_calibration(data, peaks)
 # plot.plot_calibration_data(data, calibrated)
@@ -63,7 +64,7 @@ data_file = r'' + input('Enter path to data/measurement file: ')
 
 real_data = calibrate.read_data(data_file)
 
-calibrated_real_data = calibrate.calibrate_real_data(real_data, wavelengths, average)
+calibrated_real_data = ((real_data[:, 0]) * average) + offset
 
 plt.figure()
 plot.plot_graph('Calibrated Data', calibrated_real_data, real_data[:, 1], r'$\lambda\,$nm', r'$\sigma')
