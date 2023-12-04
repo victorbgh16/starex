@@ -8,8 +8,8 @@ def read_data(file):
     return np.genfromtxt(file, delimiter=';', skip_header=3)
 
 
-def find_peaks(data, peak_height):
-    return scipy.signal.find_peaks(data[:, 1], height=peak_height)
+def find_peaks(data, peak_height, peak_distance):
+    return scipy.signal.find_peaks(data[:, 1], height=peak_height, distance=peak_distance)
 
 
 def get_peak_indices(number_peaks):

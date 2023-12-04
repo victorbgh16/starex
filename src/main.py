@@ -9,8 +9,9 @@ calib_file = r'' + input('Enter path to calibration file: ')
 data = calibrate.read_data(calib_file)
 
 peak_height = float(input('Enter peak height here: '))
+peak_distance = float(input('Enter peak distance here: '))
 
-peaks = calibrate.find_peaks(data, peak_height)
+peaks = calibrate.find_peaks(data, peak_height, peak_distance)
 
 # print('Peaks are:\n', peaks)
 
@@ -24,6 +25,10 @@ peaks_y = heights['peak_heights']
 print(f'Peak indices are: {indices}')
 print(f'Peak x values are: {peaks_x}')
 print(f'Peak heights are: {peaks_y}')
+
+plot.plot_graph('Raw Calibration', data[:, 0], data[:, 1])
+plt.scatter(peaks_x, peaks_y)
+plt.show()
 
 print('Peak 1 must be before peak 2 and so on\n')
 
@@ -67,5 +72,5 @@ real_data = calibrate.read_data(data_file)
 calibrated_real_data = ((real_data[:, 0]) * average) + offset
 
 plt.figure()
-plot.plot_graph('Calibrated Data', calibrated_real_data, real_data[:, 1], r'$\lambda\,$nm', r'$\sigma')
+plot.plot_graph('Calibrated Data', calibrated_real_data, real_data[:, 1], r'$\lambda\,$nm', r'$\sigma$')
 plt.show()
