@@ -4,7 +4,6 @@ from src import calibrate, plot
 matplotlib.use('TkAgg')
 
 calib_file = r'' + input('Enter path to calibration file: ')
-# calib_file = r'data/calib.csv'
 
 data = calibrate.read_data(calib_file)
 
@@ -12,8 +11,6 @@ peak_height = float(input('Enter peak height here: '))
 peak_distance = float(input('Enter peak distance here: '))
 
 peaks = calibrate.find_peaks(data, peak_height, peak_distance)
-
-# print('Peaks are:\n', peaks)
 
 (indices, heights) = peaks
 peaks_x = []
@@ -52,16 +49,11 @@ average = calibrate.iterative_mean(wavelengths_per_x)
 calibrated = calibrate.calibrate(data, peaks, wavelengths, average)
 offset = calibrate.calculate_offset(data, peaks, wavelengths, average)
 
-# plot.plot_raw_calibration(data, peaks)
-# plot.plot_calibration_data(data, calibrated)
-
 plot.plot_graph('Raw Calibration', data[:, 0], data[:, 1])
 plt.scatter(peaks_x, peaks_y)
-# plt.show()
 
 plt.figure()
 plot.plot_graph('Calibration Data', calibrated, data[:, 1], r'$\lambda$ nm', r'$\sigma$')
-# plt.show()
 
 # ---------------------------------------------------------------------------------------------------------------------
 
