@@ -65,5 +65,9 @@ def calibrate(data, peaks, wavelengths, average):
     return ((data[:, 0] - data[peaks[0][0], 0]) * average) + wavelengths[0]
 
 
+def calculate_offset(data, peaks, wavelengths, average):
+    return ((data[0, 0] - data[peaks[0][0], 0]) * average) + wavelengths[0]
+
+
 def calibrate_real_data(data, wavelengths, average):
     return ((data[:, 0]) * average) + wavelengths[0]
