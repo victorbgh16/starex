@@ -64,5 +64,5 @@ real_data = calibrate.read_data(data_file)
 calibrated_real_data = ((real_data[:, 0]) * average) + offset
 
 plt.figure()
-plot.plot_graph('Calibrated Data', calibrated_real_data, real_data[:, 1], r'$\lambda\,$nm', r'$\sigma$')
+plot.plot_graph('Calibrated Data', calibrated_real_data, real_data[:, 1], r'$\lambda\,$nm', r'$\sigma$', 0.7)
 plt.show()

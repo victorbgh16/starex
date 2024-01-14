@@ -22,9 +22,9 @@ def plot_calibration_data(data, calibrated):
     plt.show()
 
 
-def plot_graph(title, x, y, xlabel='', ylabel=''):
+def plot_graph(title, x, y, xlabel='', ylabel='', linewidth=1):
     plt.title(title)
     plt.xlabel(r'' + xlabel)
     plt.ylabel(r'' + ylabel)
 
-    plt.plot(x, y)
+    plt.plot(x, y, linewidth=linewidth)
