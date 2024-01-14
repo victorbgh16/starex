@@ -1,5 +1,7 @@
 import matplotlib
 import matplotlib.pyplot as plt
+import numpy as np
+
 from src import calibrate, plot
 matplotlib.use('TkAgg')
 
@@ -54,6 +56,10 @@ plt.scatter(peaks_x, peaks_y)
 
 plt.figure()
 plot.plot_graph('Calibration Data', calibrated, data[:, 1], r'$\lambda$ nm', r'$\sigma$')
+
+# theoriespektrum neon plotten
+theory = np.genfromtxt('data/Neon_theorie.csv', delimiter=';')
+plt.plot(theory[:, 0], theory[:, 1], label='plz work')
 
 # ---------------------------------------------------------------------------------------------------------------------
 
