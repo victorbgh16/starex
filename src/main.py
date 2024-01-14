@@ -71,4 +71,9 @@ calibrated_real_data = ((real_data[:, 0]) * average) + offset
 
 plt.figure()
 plot.plot_graph('Calibrated Data', calibrated_real_data, real_data[:, 1], r'$\lambda\,$nm', r'$\sigma$', 0.7)
+
+# plot theoretical exact sodium lines
+plt.axvline(x=589, color='black')
+plt.axvline(x=589.6, color='black')
+
 plt.show()
