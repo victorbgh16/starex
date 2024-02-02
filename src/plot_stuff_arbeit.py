@@ -9,5 +9,5 @@ plt.title("Unkalibriertes Spektrum")
 plt.xlabel(r'$\lambda$')
 plt.ylabel(r'rel. Intensität')
 
-plt.plot(data[:, 0], data[:, 1], color='red', linewidth=0.7)
+plt.plot(data[:, 0], data[:, 1], color='green', linewidth=0.7)
 plt.show()

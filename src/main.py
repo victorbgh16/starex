@@ -21,6 +21,7 @@ for i in range(0, len(indices)):
 
 peaks_y = heights['peak_heights']
 
+print(f'Number of peaks is: {len(indices)}')
 print(f'Peak indices are: {indices}')
 print(f'Peak x values are: {peaks_x}')
 print(f'Peak heights are: {peaks_y}')
@@ -48,7 +49,12 @@ wavelengths_per_x = calibrate.calculate_wavelengths_per_x(peak_distances, wavele
 
 average = calibrate.iterative_mean(wavelengths_per_x)
 
-calibrated = calibrate.calibrate(data, peaks, wavelengths, average)
+# use new fit instead of average here
+(coef, poly1d_fn) = fit_lib.calculate_fit(wavelengths, peaks_x, 1)
+slope = fit_lib.get_slope(coef)
+
+# calibrated = calibrate.calibrate(data, peaks, wavelengths, average)
+calibrated = calibrate.calibrate(data, peaks, wavelengths, slope)
 offset = calibrate.calculate_offset(data, peaks, wavelengths, average)
 
 plot.plot_graph('Raw Calibration', data[:, 0], data[:, 1])
@@ -57,9 +63,9 @@ plt.scatter(peaks_x, peaks_y)
 plt.figure()
 plot.plot_graph('Calibration Data', calibrated, data[:, 1], r'$\lambda$ nm', r'$\sigma$')
 
-# theoriespektrum neon plotten
-theory = np.genfromtxt('data/Neon_theorie.csv', delimiter=';')
-plt.plot(theory[:, 0], theory[:, 1], label='plz work')
+# # theoriespektrum neon plotten
+# theory = np.genfromtxt('data/Neon_theorie.csv', delimiter=';')
+# plt.plot(theory[:, 0], theory[:, 1], label='plz work')
 
 # ---------------------------------------------------------------------------------------------------------------------
 
