@@ -2,7 +2,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
-from src import calibrate, plot
+from src import calibrate, plot, fit_lib
 matplotlib.use('TkAgg')
 
 calib_file = r'' + input('Enter path to calibration file: ')
